@@ -398,27 +398,95 @@ no-repeat center center/cover;
     </style>
 </head>
 <body>
+    /* da qui */
     <!-- Header con Hero Section -->
-    <header>
-        <div class="container">
-            <nav>
-                <a href="#" class="logo">Monte <span>Guardia</span></a>
-                <ul class="nav-links">
-                    <li><a href="#about">Chi Siamo</a></li>
-                    <li><a href="#menu">Menu</a></li>
-                    <li><a href="#gallery">Galleria</a></li>
-                    <li><a href="#contact">Contatti</a></li>
-                </ul>
-            </nav>
-            
-            <div class="hero">
-                <h1>Trattoria Monte Guardia</h1>
-                <p>Un'esperienza culinaria unica con vista mozzafiato sull'isola di Ponza</p>
-                <a href="#contact" class="btn">Prenota un tavolo</a>
-            </div>
-        </div>
-    </header>
+   header {
+    position: relative;
+    padding: 100px 0 50px; /* 100px sopra, 0 destra/sinistra, 50px sotto */
+}
 
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    right: 0;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+}
+
+.logo span {
+    color: #8B4513; /* Marrone per contrasto */
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #8B4513;
+}
+
+.hero {
+    text-align: center;
+    margin-top: 80px; /* Questo abbassa il contenuto principale */
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #666;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #8B4513;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #654321;
+}
+/* fin qui */
+    
     <!-- About Section -->
     <section id="about">
         <div class="container">
@@ -553,9 +621,7 @@ no-repeat center center/cover;
                 </div>
             </div>
             <div class="map">
-    /*  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3040.363569605117!2d12.958215976554722!3d40.896514555062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132791c1f3df4ab7%3A0x328a8e1d80e5e42a!2sPonza%2C%20Province%20of%20Latina%2C%20Italy!5e0!3m2!1sen!2sus!4v1684690246232!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>  */
-            /* mappa centrata su via scotti 1 */
-                <iframe src="https://www.google.com/maps/d/u/4/edit?mid=1xkRCV4JrGnFAObTi0Y4g3fh-_3-9RSs&usp=sharing" width="640" height="480"></iframe>
+                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3040.363569605117!2d12.958215976554722!3d40.896514555062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132791c1f3df4ab7%3A0x328a8e1d80e5e42a!2sPonza%2C%20Province%20of%20Latina%2C%20Italy!5e0!3m2!1sen!2sus!4v1684690246232!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
     </section>
