@@ -27,10 +27,7 @@
         
         /* Header */
         header {
-     /*     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqd85rE43goFF8wPi934Dz84vdVxsQJWVk4WS-y7gwrdW09oMEy1XyHE_ExheJCzcYsR2w4dnMRpQ6-3oDXRo61ZFdTaI3kHYAQrQAUtlI454sLhMcOfQ1AVYv0WhPyk3NyFCg8=s680-w680-h510') no-repeat center center/cover; */
-            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-url('https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqd85rE43goFF8wPi934Dz84vdVxsQJWVk4WS-y7gwrdW09oMEy1XyHE_ExheJCzcYsR2w4dnMRpQ6-3oDXRo61ZFdTaI3kHYAQrQAUtlI454sLhMcOfQ1AVYv0WhPyk3NyFCg8=s680-w680-h510')
-no-repeat center center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqd85rE43goFF8wPi934Dz84vdVxsQJWVk4WS-y7gwrdW09oMEy1XyHE_ExheJCzcYsR2w4dnMRpQ6-3oDXRo61ZFdTaI3kHYAQrQAUtlI454sLhMcOfQ1AVYv0WhPyk3NyFCg8=s680-w680-h510') no-repeat center center/cover;
             color: #fff;
             min-height: 100vh;
             display: flex;
@@ -41,7 +38,7 @@ no-repeat center center/cover;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
+            padding: 30px 0;
         }
         
         .logo {
@@ -83,6 +80,7 @@ no-repeat center center/cover;
             align-items: center;
             text-align: center;
             padding: 0 20px;
+            margin-top: 80px; /* ABBASSA IL TESTO */
         }
         
         .hero h1 {
@@ -112,6 +110,42 @@ no-repeat center center/cover;
         
         .btn:hover {
             background: #d4a324;
+        }
+        
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .whatsapp-float i {
+            margin-top: 2px;
         }
         
         /* Sections */
@@ -144,6 +178,10 @@ no-repeat center center/cover;
         }
         
         /* About */
+        #about {
+            padding-top: 100px; /* EVITA SOVRAPPOSIZIONE */
+        }
+        
         .about-content {
             display: flex;
             align-items: center;
@@ -219,7 +257,7 @@ no-repeat center center/cover;
         /* Gallery */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 15px;
         }
         
@@ -227,6 +265,7 @@ no-repeat center center/cover;
             border-radius: 8px;
             overflow: hidden;
             height: 250px;
+            position: relative;
         }
         
         .gallery-item img {
@@ -276,6 +315,16 @@ no-repeat center center/cover;
             width: 20px;
         }
         
+        .contact-details a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-details a:hover {
+            color: #e6b32a;
+        }
+        
         .form-group {
             margin-bottom: 20px;
         }
@@ -305,12 +354,17 @@ no-repeat center center/cover;
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
         
         .map iframe {
             width: 100%;
-            height: 400px;
+            height: 450px;
             border: none;
+            max-width: 900px;
+            margin: 0 auto;
+            display: block;
+            border-radius: 8px;
         }
         
         /* Footer */
@@ -394,98 +448,73 @@ no-repeat center center/cover;
             .section-title h2 {
                 font-size: 2rem;
             }
+            
+            .contact-content {
+                flex-direction: column;
+            }
+            
+            .contact-form {
+                display: none;
+            }
+            
+            .whatsapp-float {
+                width: 55px;
+                height: 55px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 26px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+
+        /* Stili per elementi disattivati */
+        .disabled-section {
+            display: none !important;
+        }
+        
+        .disabled-note {
+            text-align: center;
+            padding: 20px;
+            background: #f8f8f8;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-style: italic;
+            color: #666;
         }
     </style>
 </head>
 <body>
-    /* da qui */
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/393687576623?text=Ciao%20Monte%20Guardia!%20Vorrei%20prenotare%20un%20tavolo%20o%20avere%20informazioni." 
+       class="whatsapp-float" 
+       target="_blank"
+       title="Scrivici su WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <!-- Header con Hero Section -->
-   header {
-    position: relative;
-    padding: 100px 0 50px; /* 100px sopra, 0 destra/sinistra, 50px sotto */
-}
-
-.container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: absolute;
-    top: 30px;
-    left: 0;
-    right: 0;
-    padding: 0 20px;
-}
-
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-    text-decoration: none;
-    color: #333;
-}
-
-.logo span {
-    color: #8B4513; /* Marrone per contrasto */
-}
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 30px;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
-    transition: color 0.3s;
-}
-
-.nav-links a:hover {
-    color: #8B4513;
-}
-
-.hero {
-    text-align: center;
-    margin-top: 80px; /* Questo abbassa il contenuto principale */
-}
-
-.hero h1 {
-    font-size: 3rem;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-.hero p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-    color: #666;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.btn {
-    display: inline-block;
-    padding: 12px 30px;
-    background-color: #8B4513;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background-color 0.3s;
-}
-
-.btn:hover {
-    background-color: #654321;
-}
-/* fin qui */
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Monte <span>Guardia</span></a>
+                <ul class="nav-links">
+                    <li><a href="#about">Chi Siamo</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#gallery">Galleria</a></li>
+                    <li><a href="#contact">Contatti</a></li>
+                </ul>
+            </nav>
+            
+            <div class="hero">
+                <h1>Trattoria Monte Guardia</h1>
+                <p>Un'esperienza culinaria unica con vista mozzafiato sull'isola di Ponza</p>
+                <a href="#contact" class="btn">Contattaci</a>
+            </div>
+        </div>
+    </header>
     
     <!-- About Section -->
     <section id="about">
@@ -549,16 +578,22 @@ nav {
             </div>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Interno della Trattoria">
+                    <img src="https://scontent.fcia4-1.fna.fbcdn.net/v/t39.30808-6/520166294_2558709347860732_7223967536574906319_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=833d8c&_nc_ohc=HNt8iwal4CYQ7kNvwFLznQR&_nc_oc=AdnbMXSNaW3rc_Z1QZmDuIBVkBV0GEsyMB0fqwopqtJplPykBjh1ofjRyCt31O8u39I&_nc_zt=23&_nc_ht=scontent.fcia4-1.fna&_nc_gid=QLyhXIGaDsBQ-stvvNy0sA&oh=00_AfaTKzITzpuUq5TUwbKdTgCKP0KgIqMa6372Wb0qlAvQkA&oe=68D8D94D" alt="Interno ristorante Monte Guardia">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Piatti gourmet">
+                    <img src="https://scontent.fcia4-1.fna.fbcdn.net/v/t39.30808-6/518300575_2558709491194051_7769668428330376724_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_ohc=HTZ2fe0cMEcQ7kNvwFLEngw&_nc_oc=AdmWL9kPCUh8Tyfg7uwknAkU3fASEmcBseX_Oni8jQYnaDjhKKf84x6uBcyGIEWXQXY&_nc_zt=23&_nc_ht=scontent.fcia4-1.fna&_nc_gid=H_o-sJEVpQemiywwsH4MBg&oh=00_AfZauJy1jB_I19-U3gSqh2CYblqjYiKYiMRnkngpJi4wbg&oe=68D900BF" alt="Piatti tipici Monte Guardia">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Vista sul mare">
+                    <img src="https://scontent.fcia4-1.fna.fbcdn.net/v/t39.30808-6/518334494_2558709537860713_8981312762641639124_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=833d8c&_nc_ohc=buNp6QLcUWMQ7kNvwHg5oau&_nc_oc=Adnlo1SdabnJQAUjIOs18_vtFCpsEARwbKKNyHLaEdrjHSU60FmoDgHEqLru7CGYWXM&_nc_zt=23&_nc_ht=scontent.fcia4-1.fna&_nc_gid=AVeSW9TR3eqBfqiPCJ5vJQ&oh=00_AfYGvF2KeOxkEzJq9qJrxtxU5gwMFnwD4jp4eb8aGxDL-w&oe=68D90214" alt="Vista mare Monte Guardia">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80" alt="Cucina">
+                    <img src="https://scontent.fcia4-1.fna.fbcdn.net/v/t39.30808-6/528132009_10227826562667236_3529735685642475528_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=111&ccb=1-7&_nc_sid=833d8c&_nc_ohc=lNnezqj1rJ8Q7kNvwEYSPhd&_nc_oc=Adml3rNt42Os_if7yqP4z6kIKmll-K9t0RfKEoXTuRVNZ7aoHLief75Tpzzx6gSzg2k&_nc_zt=23&_nc_ht=scontent.fcia4-1.fna&_nc_gid=2XIUDc6rV52KC-RPWaJDfg&oh=00_AfZFw9OeGtKttASnNOzt3q-FXHzLSzV4nARdbt2IeuK-HA&oe=68D8E3F7" alt="Cucina Monte Guardia">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Atmosfera serale">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Specialità di pesce">
                 </div>
             </div>
         </div>
@@ -576,20 +611,30 @@ nav {
                     <ul class="contact-details">
                         <li>
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>Via Scotti di Basso 1, 04027 Ponza (LT) Italia</span>
+                            <a href="https://maps.apple.com/?q=Ristorante+Monte+Guardia+Via+Scotti+di+Basso+1+Ponza+LT+Italia&ll=40.896515,12.960391&z=17" 
+                               target="_blank" 
+                               title="Apri in Mappe">
+                                <span>Via Scotti di Basso 1, 04027 Ponza (LT) Italia</span>
+                            </a>
                         </li>
                         <li>
-                            <i class="fas fa-phone"></i
-                            <span>+39 0771 80 247</span>
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+39077180247" title="Chiama il numero fisso">
+                                <span>+39 0771 80 247</span>
+                            </a>
                         </li>
-                      <li>
-                            <i class="fas fa-mobile-alt"></i
-                            <span>+39 368 7576623</span>
+                        <li>
+                            <i class="fas fa-mobile-alt"></i>
+                            <a href="tel:+393687576623" title="Chiama il cellulare">
+                                <span>+39 368 7576623</span>
+                            </a>
                         </li>
-                     
                         <li>
                             <i class="fas fa-envelope"></i>
-                            <span>emilianomazzella1971@gmail.com</span>
+                            <a href="mailto:emilianomazzella1971@gmail.com?subject=Prenotazione%20Monte%20Guardia&body=Salve,%20vorrei%20prenotare%20un%20tavolo%20per%20..."
+                               title="Invia email">
+                                <span>emilianomazzella1971@gmail.com</span>
+                            </a>
                         </li>
                         <li>
                             <i class="fas fa-clock"></i>
@@ -597,7 +642,8 @@ nav {
                         </li>
                     </ul>
                 </div>
-                <div class="contact-form">
+                <!-- FORM DISATTIVATO TEMPORANEAMENTE -->
+                <div class="contact-form disabled-section">
                     <h3>Prenota un tavolo</h3>
                     <form>
                         <div class="form-group">
@@ -620,8 +666,20 @@ nav {
                     </form>
                 </div>
             </div>
+            
+            <!-- Nota per il form disattivato -->
+            <div class="disabled-note">
+                <p>📞 Per prenotazioni, contattaci direttamente telefonicamente o via WhatsApp</p>
+            </div>
+            
+            <!-- Mappa centrata sul Ristorante Monte Guardia -->
             <div class="map">
-                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3040.363569605117!2d12.958215976554722!3d40.896514555062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132791c1f3df4ab7%3A0x328a8e1d80e5e42a!2sPonza%2C%20Province%20of%20Latina%2C%20Italy!5e0!3m2!1sen!2sus!4v1684690246232!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3040.363569605117!2d12.958215976554722!3d40.896514555062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132791c1f3df4ab7%3A0x328a8e1d80e5e42a!2sRistorante%20Monte%20Guardia%2C%20Via%20Scotti%20di%20Basso%2C%201%2C%2004027%20Ponza%20LT%2C%20Italia!5e0!3m2!1sit!2sit!4v1695482400000!5m2!1sit!2sit" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Mappa Ristorante Monte Guardia">
+                </iframe>
             </div>
         </div>
     </section>
@@ -634,9 +692,15 @@ nav {
                     <h3>Monte Guardia</h3>
                     <p>La miglior trattoria di Ponza con vista mozzafiato sul mare e cucina tradizionale mediterranea.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                        <a href="https://www.facebook.com/RistoranteMonteGuardia/mentions" target="_blank" title="Seguici su Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" title="Seguici su Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" title="Valutaci su TripAdvisor">
+                            <i class="fab fa-tripadvisor"></i>
+                        </a>
                     </div>
                 </div>
                 <div class="footer-section">
@@ -647,7 +711,8 @@ nav {
                         <li><span>Domenica:</span> <span>12:00 - 15:00, 19:00 - 23:00</span></li>
                     </ul>
                 </div>
-                <div class="footer-section">
+                <!-- NEWSLETTER DISATTIVATA TEMPORANEAMENTE -->
+                <div class="footer-section disabled-section">
                     <h3>Newsletter</h3>
                     <p>Iscriviti alla nostra newsletter per ricevere offerte speciali e aggiornamenti.</p>
                     <form>
