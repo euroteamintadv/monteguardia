@@ -476,13 +476,90 @@
         }
         
         .disabled-note {
-            text-align: center;
-            padding: 20px;
-            background: #f8f8f8;
+            display: none !important;
+        }
+
+        /* Form prenotazione */
+        .contact-form h3 {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 1.4rem;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            background: #fff;
+            color: #333;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            cursor: pointer;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #e6b32a;
+            box-shadow: 0 0 0 3px rgba(230, 179, 42, 0.15);
+        }
+
+        .form-group label span.required {
+            color: #e6b32a;
+            margin-left: 2px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-submit:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* Messaggi feedback */
+        .form-feedback {
+            display: none;
+            padding: 15px 20px;
             border-radius: 8px;
-            margin-top: 20px;
-            font-style: italic;
-            color: #666;
+            margin-top: 15px;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .form-feedback.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .form-feedback.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
         }
     </style>
 </head>
@@ -640,34 +717,78 @@
                         </li>
                     </ul>
                 </div>
-                <!-- FORM DISATTIVATO TEMPORANEAMENTE -->
-                <div class="contact-form disabled-section">
-                    <h3>Prenota un tavolo</h3>
-                    <form>
-                        <div class="form-group">
-                            <label for="name">Nome</label>
-                            <input type="text" id="name" required>
+                <!-- FORM PRENOTAZIONE -->
+                <div class="contact-form">
+                    <h3>📅 Prenota un Tavolo</h3>
+                    <form id="reservationForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">Nome <span class="required">*</span></label>
+                                <input type="text" id="firstName" name="firstName" placeholder="Mario" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Cognome <span class="required">*</span></label>
+                                <input type="text" id="lastName" name="lastName" placeholder="Rossi" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email <span class="required">*</span></label>
+                                <input type="email" id="email" name="email" placeholder="mario@email.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Telefono <span class="required">*</span></label>
+                                <input type="tel" id="phone" name="phone" placeholder="+39 333 0000000" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="guests">N° Ospiti <span class="required">*</span></label>
+                                <select id="guests" name="guests" required>
+                                    <option value="" disabled selected>Seleziona</option>
+                                    <option value="1">1 persona</option>
+                                    <option value="2">2 persone</option>
+                                    <option value="3">3 persone</option>
+                                    <option value="4">4 persone</option>
+                                    <option value="5">5 persone</option>
+                                    <option value="6">6 persone</option>
+                                    <option value="7">7 persone</option>
+                                    <option value="8">8 persone</option>
+                                    <option value="9+">9+ persone</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="date">Data <span class="required">*</span></label>
+                                <input type="date" id="date" name="date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="time">Ora <span class="required">*</span></label>
+                                <select id="time" name="time" required>
+                                    <option value="" disabled selected>Seleziona</option>
+                                    <option value="20:00">20:00</option>
+                                    <option value="20:30">20:30</option>
+                                    <option value="21:00">21:00</option>
+                                    <option value="21:30">21:30</option>
+                                    <option value="22:00">22:00</option>
+                                    <option value="22:30">22:30</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" required>
+                            <label for="notes">Richieste particolari / Allergie</label>
+                            <textarea id="notes" name="notes" placeholder="Es: allergia ai crostacei, sedia per bambini, tavolo esterno..."></textarea>
                         </div>
-                        <div class="form-group">
-                            <label for="phone">Telefono</label>
-                            <input type="tel" id="phone">
+                        <button type="submit" class="btn btn-submit" id="submitBtn">
+                            <i class="fas fa-paper-plane"></i> Invia Prenotazione
+                        </button>
+                        <div class="form-feedback success" id="successMsg">
+                            ✅ Prenotazione inviata! Ti contatteremo a breve per conferma.
                         </div>
-                        <div class="form-group">
-                            <label for="message">Messaggio</label>
-                            <textarea id="message" required></textarea>
+                        <div class="form-feedback error" id="errorMsg">
+                            ❌ Errore nell'invio. Contattaci via WhatsApp o telefono.
                         </div>
-                        <button type="submit" class="btn">Invia Prenotazione</button>
                     </form>
                 </div>
-            </div>
-            
-            <!-- Nota per il form disattivato -->
-            <div class="disabled-note">
-                <p>📞 Per prenotazioni, contattaci direttamente telefonicamente o via WhatsApp</p>
             </div>
             
             <!-- Mappa centrata sul Ristorante Monte Guardia -->
@@ -724,5 +845,70 @@
             </div>
         </div>
     </footer>
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        // ─── EMAILJS CONFIG ───────────────────────────────────────────────
+        // Per attivare: registrati su emailjs.com (gratuito, 200 email/mese)
+        // poi sostituisci i 3 valori qui sotto con quelli del tuo account
+        const EMAILJS_PUBLIC_KEY  = 'TUO_PUBLIC_KEY';    // Account > API Keys
+        const EMAILJS_SERVICE_ID  = 'TUO_SERVICE_ID';   // Email Services
+        const EMAILJS_TEMPLATE_ID = 'TUO_TEMPLATE_ID';  // Email Templates
+        // ──────────────────────────────────────────────────────────────────
+
+        emailjs.init(EMAILJS_PUBLIC_KEY);
+
+        // Imposta data minima = oggi
+        document.addEventListener('DOMContentLoaded', function() {
+            const dateInput = document.getElementById('date');
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.setAttribute('min', today);
+        });
+
+        document.getElementById('reservationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const btn       = document.getElementById('submitBtn');
+            const successEl = document.getElementById('successMsg');
+            const errorEl   = document.getElementById('errorMsg');
+
+            // Nascondi messaggi precedenti
+            successEl.style.display = 'none';
+            errorEl.style.display   = 'none';
+
+            // Loading state
+            btn.disabled   = true;
+            btn.innerHTML  = '<i class="fas fa-spinner fa-spin"></i> Invio in corso...';
+
+            // Dati del form
+            const templateParams = {
+                firstName : document.getElementById('firstName').value,
+                lastName  : document.getElementById('lastName').value,
+                email     : document.getElementById('email').value,
+                phone     : document.getElementById('phone').value,
+                guests    : document.getElementById('guests').value,
+                date      : document.getElementById('date').value,
+                time      : document.getElementById('time').value,
+                notes     : document.getElementById('notes').value || 'Nessuna richiesta particolare',
+                to_email  : 'emilianomazzella1971@gmail.com'
+            };
+
+            emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+                .then(function() {
+                    successEl.style.display = 'block';
+                    document.getElementById('reservationForm').reset();
+                    btn.disabled  = false;
+                    btn.innerHTML = '<i class="fas fa-paper-plane"></i> Invia Prenotazione';
+                    // Scroll al messaggio di conferma
+                    successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                })
+                .catch(function(error) {
+                    console.error('EmailJS error:', error);
+                    errorEl.style.display = 'block';
+                    btn.disabled  = false;
+                    btn.innerHTML = '<i class="fas fa-paper-plane"></i> Invia Prenotazione';
+                });
+        });
+    </script>
 </body>
 </html>
