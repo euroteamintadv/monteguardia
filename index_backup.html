@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trattoria Monte Guardia - Ponza</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://www.mediafire.com/view/6n1h75yhusj54an/Chi_siamo.jpg/file') no-repeat center center/cover;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 0;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: #e6b32a;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #e6b32a;
+        }
+        
+        .hero {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            margin-top: 80px; /* ABBASSA IL TESTO */
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 700px;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #e6b32a;
+            color: #fff;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-decoration: none;
+        }
+        
+        .btn:hover {
+            background: #d4a324;
+        }
+        
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .whatsapp-float i {
+            margin-top: 2px;
+        }
+        
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #e6b32a;
+        }
+        
+        /* About */
+        #about {
+            padding-top: 100px; /* EVITA SOVRAPPOSIZIONE */
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Menu */
+        #menu {
+            background-color: #fff;
+        }
+        
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .menu-item {
+            background: #f8f8f8;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .menu-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .menu-item-content {
+            padding: 20px;
+        }
+        
+        .menu-item h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .menu-item p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .price {
+            color: #e6b32a;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            height: 250px;
+            position: relative;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Contact */
+        #contact {
+            background-color: #fff;
+        }
+        
+        .contact-content {
+            display: flex;
+            gap: 40px;
+        }
+        
+        .contact-info, .contact-form {
+            flex: 1;
+        }
+        
+        .contact-info h3 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .contact-details {
+            list-style: none;
+        }
+        
+        .contact-details li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-details i {
+            color: #e6b32a;
+            font-size: 20px;
+            margin-right: 15px;
+            width: 20px;
+        }
+        
+        .contact-details a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-details a:hover {
+            color: #e6b32a;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Map */
+        .map {
+            margin-top: 40px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .map iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+            max-width: 900px;
+            margin: 0 auto;
+            display: block;
+            border-radius: 8px;
+        }
+        
+        /* Footer */
+        footer {
+            background: #222;
+            color: #fff;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-section h3 {
+            color: #e6b32a;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .footer-section p {
+            margin-bottom: 15px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            color: #fff;
+            font-size: 1.5rem;
+            margin-right: 15px;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: #e6b32a;
+        }
+        
+        .opening-hours {
+            list-style: none;
+        }
+        
+        .opening-hours li {
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dashed #444;
+            padding-bottom: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .about-content, .contact-content {
+                flex-direction: column;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .contact-content {
+                flex-direction: column;
+            }
+            
+            .contact-form {
+                display: none;
+            }
+            
+            .whatsapp-float {
+                width: 55px;
+                height: 55px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 26px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+
+        /* Stili per elementi disattivati */
+        .disabled-section {
+            display: none !important;
+        }
+        
+        .disabled-note {
+            display: none !important;
+        }
+
+        /* Form prenotazione */
+        .contact-form h3 {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 1.4rem;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            background: #fff;
+            color: #333;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            cursor: pointer;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #e6b32a;
+            box-shadow: 0 0 0 3px rgba(230, 179, 42, 0.15);
+        }
+
+        .form-group label span.required {
+            color: #e6b32a;
+            margin-left: 2px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-submit:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* Messaggi feedback */
+        .form-feedback {
+            display: none;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .form-feedback.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .form-feedback.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/393687576623?text=Ciao%20Monte%20Guardia!%20Vorrei%20prenotare%20un%20tavolo%20o%20avere%20informazioni." 
+       class="whatsapp-float" 
+       target="_blank"
+       title="Scrivici su WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Header con Hero Section -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Monte <span>Guardia</span></a>
+                <ul class="nav-links">
+                    <li><a href="#about">Chi Siamo</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#gallery">Galleria</a></li>
+                    <li><a href="#contact">Contatti</a></li>
+                </ul>
+            </nav>
+            
+            <div class="hero">
+                <h1>Trattoria Monte Guardia</h1>
+                <p>Una esperienza unica tra i sapori di Ponza: tramonti sul mare e piatti della tradizione, un’emozione che resterà nel tuo cuore.</p>
+                <a href="#contact" class="btn">Contattaci</a>
+            </div>
+        </div>
+    </header>
+    
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Chi Siamo</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>La Trattoria Monte Guardia si trova in una posizione privilegiata sull'isola di Ponza, offrendo una vista panoramica mozzafiato sul mare e sui caratteristici faraglioni.</p>
+                    <p>La nostra cucina combina i sapori autentici della tradizione mediterranea con ingredienti freschi e locali, pescati giornalmente nelle acque cristalline dell'arcipelago pontino.</p>
+                    <p>La ricerca del pescato locale, offerto giornalmente dalle acque cristalline del nostro arcipelago, l’utilizzo di materie prime di stagione danno vita quotidianamente ai nostri piatti. La nostra origine contadina ci permette di offrire la possibilità di poter assaporare i piatti della vecchia tradizione culinaria fatta da ingredienti poveri e genuini: verdure di stagione e prodotti della terra diventano i protagonisti della tavola.</p>
+                    <p>Una cucina che racconta, da quasi 50 anni, la storia della nostra famiglia fatta non solo di mare, ma anche di terra, semplicità e passione.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://scontent.fotp3-1.fna.fbcdn.net/v/t1.6435-9/183207800_1717429831801565_6222135878522124249_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=833d8c&_nc_ohc=4a8bcqm7c_oQ7kNvwHeStHg&_nc_oc=AdnAA5LX54GjXvkTlkQlUgl0Zw6Q7eo2IWhxZbqre5VKBJxlaPgsYKQ4QmVri33QDvmyB8sR31T4wAGQ1Qf7_YW6&_nc_zt=23&_nc_ht=scontent.fotp3-1.fna&_nc_gid=BWQsgINjpGdBG0LZZG_DdA&oh=00_AfbmgnfriQuI-MIvCkSbpVP6F8yGuekqgDQ55lp1GHSuwQ&oe=68E7F8CB" alt="Vista della Trattoria"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu">
+        <div class="container">
+            <div class="section-title">
+                <h2>Il Nostro Menu</h2>
+            </div>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Antipasto di mare">
+                    <div class="menu-item-content">
+                        <h3>Spaghetti alla Granseola</h3>
+                        <p>Un primo piatto irresistibile, che esalta la dolcezza e la delicatezza della polpa di granchio locale “O Fellone”, capace di racchiudere in ogni boccone tutto il sapore e la magia del mare di Ponza.</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=708&q=80" alt="Linguine alle vongole">
+                    <div class="menu-item-content">
+                        <h3>Spaghetti alle vongole</h3>
+                        <p>Se ami i sapori autentici del mare, devi assolutamente provare il nostro Spaghetto alle Vongole: un piatto con una preparazione semplice ma ricco di gusto.</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Pesce alla griglia">
+                    <div class="menu-item-content">
+                        <h3>I nostri vini</h3>
+                        <p>Viti centenarie e tradizioni tramandate da generazioni creano vini straordinari: un biancolella profumato e un rosso primitivo avvolgente, custoditi in una cantina scavata nella roccia. Un’esperienza perfetta  per chi cerca autenticità e ricordi indimenticabili alla Trattoria Monte Guardia.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>La Nostra Galleria</h2>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://scontent.fcia4-1.fna.fbcdn.net/v/t39.30808-6/520166294_2558709347860732_7223967536574906319_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=833d8c&_nc_ohc=HNt8iwal4CYQ7kNvwFLznQR&_nc_oc=AdnbMXSNaW3rc_Z1QZmDuIBVkBV0GEsyMB0fqwopqtJplPykBjh1ofjRyCt31O8u39I&_nc_zt=23&_nc_ht=scontent.fcia4-1.fna&_nc_gid=QLyhXIGaDsBQ-stvvNy0sA&oh=00_AfaTKzITzpuUq5TUwbKdTgCKP0KgIqMa6372Wb0qlAvQkA&oe=68D8D94D" alt="Interno ristorante Monte Guardia">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://scontent.fcia4-1.fna.fbcdn.net/v/t39.30808-6/518300575_2558709491194051_7769668428330376724_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_ohc=HTZ2fe0cMEcQ7kNvwFLEngw&_nc_oc=AdmWL9kPCUh8Tyfg7uwknAkU3fASEmcBseX_Oni8jQYnaDjhKKf84x6uBcyGIEWXQXY&_nc_zt=23&_nc_ht=scontent.fcia4-1.fna&_nc_gid=H_o-sJEVpQemiywwsH4MBg&oh=00_AfZauJy1jB_I19-U3gSqh2CYblqjYiKYiMRnkngpJi4wbg&oe=68D900BF" alt="Piatti tipici Monte Guardia">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://scontent.fcia4-1.fna.fbcdn.net/v/t39.30808-6/518334494_2558709537860713_8981312762641639124_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=833d8c&_nc_ohc=buNp6QLcUWMQ7kNvwHg5oau&_nc_oc=Adnlo1SdabnJQAUjIOs18_vtFCpsEARwbKKNyHLaEdrjHSU60FmoDgHEqLru7CGYWXM&_nc_zt=23&_nc_ht=scontent.fcia4-1.fna&_nc_gid=AVeSW9TR3eqBfqiPCJ5vJQ&oh=00_AfYGvF2KeOxkEzJq9qJrxtxU5gwMFnwD4jp4eb8aGxDL-w&oe=68D90214" alt="Vista mare Monte Guardia">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://scontent.fcia4-1.fna.fbcdn.net/v/t39.30808-6/528132009_10227826562667236_3529735685642475528_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=111&ccb=1-7&_nc_sid=833d8c&_nc_ohc=lNnezqj1rJ8Q7kNvwEYSPhd&_nc_oc=Adml3rNt42Os_if7yqP4z6kIKmll-K9t0RfKEoXTuRVNZ7aoHLief75Tpzzx6gSzg2k&_nc_zt=23&_nc_ht=scontent.fcia4-1.fna&_nc_gid=2XIUDc6rV52KC-RPWaJDfg&oh=00_AfZFw9OeGtKttASnNOzt3q-FXHzLSzV4nARdbt2IeuK-HA&oe=68D8E3F7" alt="Cucina Monte Guardia">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Atmosfera serale">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Specialità di pesce">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contatti</h2>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Informazioni</h3>
+                    <ul class="contact-details">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <a href="https://maps.apple.com/?q=Ristorante+Monte+Guardia+Via+Scotti+di+Basso+1+Ponza+LT+Italia&ll=40.896515,12.960391&z=17" 
+                               target="_blank" 
+                               title="Apri in Mappe">
+                                <span>Via Scotti di Basso 1, 04027 Ponza (LT) Italia</span>
+                            </a>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+39077180247" title="Chiama il numero fisso">
+                                <span>+39 0771 80 247</span>
+                            </a>
+                        </li>
+                        <li>
+                            <i class="fas fa-mobile-alt"></i>
+                            <a href="tel:+393687576623" title="Chiama il cellulare">
+                                <span>+39 368 7576623</span>
+                            </a>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:emilianomazzella1971@gmail.com?subject=Prenotazione%20Monte%20Guardia&body=Salve,%20vorrei%20prenotare%20un%20tavolo%20per%20..."
+                               title="Invia email">
+                                <span>emilianomazzella1971@gmail.com</span>
+                            </a>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Aperto tutti i giorni: cena 20:00 - 00:00</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- FORM PRENOTAZIONE -->
+                <div class="contact-form">
+                    <h3>📅 Prenota un Tavolo</h3>
+                    <form id="reservationForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">Nome <span class="required">*</span></label>
+                                <input type="text" id="firstName" name="firstName" placeholder="Mario" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Cognome <span class="required">*</span></label>
+                                <input type="text" id="lastName" name="lastName" placeholder="Rossi" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email <span class="required">*</span></label>
+                                <input type="email" id="email" name="email" placeholder="mario@email.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Telefono <span class="required">*</span></label>
+                                <input type="tel" id="phone" name="phone" placeholder="+39 333 0000000" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="guests">N° Ospiti <span class="required">*</span></label>
+                                <select id="guests" name="guests" required>
+                                    <option value="" disabled selected>Seleziona</option>
+                                    <option value="1">1 persona</option>
+                                    <option value="2">2 persone</option>
+                                    <option value="3">3 persone</option>
+                                    <option value="4">4 persone</option>
+                                    <option value="5">5 persone</option>
+                                    <option value="6">6 persone</option>
+                                    <option value="7">7 persone</option>
+                                    <option value="8">8 persone</option>
+                                    <option value="9+">9+ persone</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="date">Data <span class="required">*</span></label>
+                                <input type="date" id="date" name="date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="time">Ora <span class="required">*</span></label>
+                                <select id="time" name="time" required>
+                                    <option value="" disabled selected>Seleziona</option>
+                                    <option value="20:00">20:00</option>
+                                    <option value="20:30">20:30</option>
+                                    <option value="21:00">21:00</option>
+                                    <option value="21:30">21:30</option>
+                                    <option value="22:00">22:00</option>
+                                    <option value="22:30">22:30</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="notes">Richieste particolari / Allergie</label>
+                            <textarea id="notes" name="notes" placeholder="Es: allergia ai crostacei, sedia per bambini, tavolo esterno..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-submit" id="submitBtn">
+                            <i class="fas fa-paper-plane"></i> Invia Prenotazione
+                        </button>
+                        <div class="form-feedback success" id="successMsg">
+                            ✅ Prenotazione inviata! Ti contatteremo a breve per conferma.
+                        </div>
+                        <div class="form-feedback error" id="errorMsg">
+                            ❌ Errore nell'invio. Contattaci via WhatsApp o telefono.
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Mappa centrata sul Ristorante Monte Guardia -->
+            <div class="map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3040.363569605117!2d12.958215976554722!3d40.896514555062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132791c1f3df4ab7%3A0x328a8e1d80e5e42a!2sRistorante%20Monte%20Guardia%2C%20Via%20Scotti%20di%20Basso%2C%201%2C%2004027%20Ponza%20LT%2C%20Italia!5e0!3m2!1sit!2sit!4v1695482400000!5m2!1sit!2sit" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Mappa Ristorante Monte Guardia">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Monte Guardia</h3>
+                    <p>La miglior trattoria di Ponza con vista mozzafiato sul mare e cucina tradizionale mediterranea.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/RistoranteMonteGuardia/mentions" target="_blank" title="Seguici su Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" title="Seguici su Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" title="Valutaci su TripAdvisor">
+                            <i class="fab fa-tripadvisor"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Orari di Apertura</h3>
+                    <ul class="opening-hours">
+                        <li><span>Lunedì - Domenica :</span> <span>19:00 - 00:00</span></li>
+                    </ul>
+                </div>
+                <!-- NEWSLETTER DISATTIVATA TEMPORANEAMENTE -->
+                <div class="footer-section disabled-section">
+                    <h3>Newsletter</h3>
+                    <p>Iscriviti alla nostra newsletter per ricevere offerte speciali e aggiornamenti.</p>
+                    <form>
+                        <div class="form-group">
+                            <input type="email" placeholder="La tua email" required>
+                        </div>
+                        <button type="submit" class="btn">Iscriviti</button>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Trattoria Monte Guardia Ponza. Tutti i diritti riservati. by publimatiqa.com</p>
+            </div>
+        </div>
+    </footer>
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        // ─── EMAILJS CONFIG ───────────────────────────────────────────────
+        // Per attivare: registrati su emailjs.com (gratuito, 200 email/mese)
+        // poi sostituisci i 3 valori qui sotto con quelli del tuo account
+        const EMAILJS_PUBLIC_KEY  = 'TUO_PUBLIC_KEY';    // Account > API Keys
+        const EMAILJS_SERVICE_ID  = 'TUO_SERVICE_ID';   // Email Services
+        const EMAILJS_TEMPLATE_ID = 'TUO_TEMPLATE_ID';  // Email Templates
+        // ──────────────────────────────────────────────────────────────────
+
+        emailjs.init(EMAILJS_PUBLIC_KEY);
+
+        // Imposta data minima = oggi
+        document.addEventListener('DOMContentLoaded', function() {
+            const dateInput = document.getElementById('date');
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.setAttribute('min', today);
+        });
+
+        document.getElementById('reservationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const btn       = document.getElementById('submitBtn');
+            const successEl = document.getElementById('successMsg');
+            const errorEl   = document.getElementById('errorMsg');
+
+            // Nascondi messaggi precedenti
+            successEl.style.display = 'none';
+            errorEl.style.display   = 'none';
+
+            // Loading state
+            btn.disabled   = true;
+            btn.innerHTML  = '<i class="fas fa-spinner fa-spin"></i> Invio in corso...';
+
+            // Dati del form
+            const templateParams = {
+                firstName : document.getElementById('firstName').value,
+                lastName  : document.getElementById('lastName').value,
+                email     : document.getElementById('email').value,
+                phone     : document.getElementById('phone').value,
+                guests    : document.getElementById('guests').value,
+                date      : document.getElementById('date').value,
+                time      : document.getElementById('time').value,
+                notes     : document.getElementById('notes').value || 'Nessuna richiesta particolare',
+                to_email  : 'emilianomazzella1971@gmail.com'
+            };
+
+            emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+                .then(function() {
+                    successEl.style.display = 'block';
+                    document.getElementById('reservationForm').reset();
+                    btn.disabled  = false;
+                    btn.innerHTML = '<i class="fas fa-paper-plane"></i> Invia Prenotazione';
+                    // Scroll al messaggio di conferma
+                    successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                })
+                .catch(function(error) {
+                    console.error('EmailJS error:', error);
+                    errorEl.style.display = 'block';
+                    btn.disabled  = false;
+                    btn.innerHTML = '<i class="fas fa-paper-plane"></i> Invia Prenotazione';
+                });
+        });
+    </script>
+</body>
+</html>
